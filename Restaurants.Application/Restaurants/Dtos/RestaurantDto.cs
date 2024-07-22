@@ -27,7 +27,8 @@ public class RestaurantDto
             HasDelivery = restaurant.HasDelivery,
             City = restaurant.Address?.City,
             Street = restaurant.Address?.Street,
-            PostalCode = restaurant.Address?.PostalCode
+            PostalCode = restaurant.Address?.PostalCode,
+            Dishes = restaurant.Dishes.Select(DishDto.FromEntity).ToList(),
         };
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Restaurants.Domain;
 
 namespace Restaurants.Infrastructure;
 
@@ -14,5 +15,6 @@ public static class ServiceCollectionExtension
         var connectionString = configuration.GetConnectionString("DatabaseConnection");
         services.AddDbContext<RestaurantDbContext>(options => options.UseNpgsql(connectionString));
         services.AddScoped<IRestaurantSeeder, RestaurantSeeder>();
+        services.AddScoped<IRestaurantRepository, RestaurantRepository>();
     }
 }

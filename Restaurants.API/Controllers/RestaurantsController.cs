@@ -4,7 +4,7 @@ using Restaurants.Application.Restaurants.Dtos;
 
 namespace Restaurants.API.Controllers
 {
-    // [ApiController]
+    [ApiController]
     [Route("api/[controller]")]
     public class RestaurantsController(IRestaurantsService restaurantsService) : ControllerBase
     {

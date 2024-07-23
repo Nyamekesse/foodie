@@ -49,11 +49,15 @@ namespace Restaurants.API.Controllers
         }
 
         [HttpPatch("{id}")]
-        public async Task<IActionResult> UpdateRestaurant([FromRoute] int id, UpdateRestaurantCommand command)
+        public async Task<IActionResult> UpdateRestaurant(
+            [FromRoute] int id,
+            UpdateRestaurantCommand command
+        )
         {
             command.Id = id;
             var isUpdated = await mediator.Send(command);
-            if (!isUpdated) return NotFound();
+            if (!isUpdated)
+                return NotFound();
             return NoContent();
         }
     }

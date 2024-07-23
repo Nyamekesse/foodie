@@ -10,8 +10,7 @@ namespace Restaurants.Application.Restaurants.Commands.UpdateRestaurant
     {
         public UpdateRestaurantCommandValidator()
         {
-            RuleFor(dto => dto.Name)
-            .Length(3, 100);
+            RuleFor(dto => dto.Name).Length(3, 100);
         }
     }
 }

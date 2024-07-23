@@ -1,4 +1,3 @@
-
 using MediatR;
 
 namespace Restaurants.Application.Restaurants.Commands.DeleteRestaurant

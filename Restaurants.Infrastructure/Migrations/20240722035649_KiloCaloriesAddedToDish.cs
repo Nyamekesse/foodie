@@ -14,15 +14,14 @@ namespace Restaurants.Infrastructure.Migrations
                 name: "KiloCalories",
                 table: "Dishes",
                 type: "integer",
-                nullable: true);
+                nullable: true
+            );
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "KiloCalories",
-                table: "Dishes");
+            migrationBuilder.DropColumn(name: "KiloCalories", table: "Dishes");
         }
     }
 }

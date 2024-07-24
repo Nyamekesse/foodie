@@ -16,7 +16,11 @@ namespace Restaurants.Application.Restaurants.Commands.UpdateRestaurant
             CancellationToken cancellationToken
         )
         {
-            logger.LogInformation($"Updating restaurant with value {request.Id}");
+            logger.LogInformation(
+                "Updating restaurant with id {RestaurantId} with {@UpdatedRestaurant}",
+                request.Id,
+                request
+            );
             var restaurant = await restaurantRepository.GetByIdAsync(request.Id);
             if (restaurant is null)
                 return false;

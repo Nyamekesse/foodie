@@ -16,7 +16,7 @@ namespace Restaurants.Application.Restaurants.Commands.CreateRestaurants
             CancellationToken cancellationToken
         )
         {
-            logger.LogInformation("Getting all restaurants");
+            logger.LogInformation("Creating a new restaurant {@Restaurant}", request);
             var restaurant = mapper.Map<Restaurant>(request);
             int id = await restaurantRepository.Create(restaurant);
             return id;

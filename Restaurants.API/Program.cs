@@ -1,3 +1,4 @@
+using Restaurants.API.Middlewares;
 using Restaurants.Application;
 using Restaurants.Infrastructure;
 using Serilog;
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddScoped<ErrorHandlingMiddleware>();
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 builder.Services.AddInfrastructure(builder.Configuration);
@@ -19,6 +21,8 @@ var app = builder.Build();
 var scope = app.Services.CreateScope();
 var seeder = scope.ServiceProvider.GetRequiredService<IRestaurantSeeder>();
 await seeder.Seed();
+
+app.UseMiddleware<ErrorHandlingMiddleware>();
 
 app.UseSerilogRequestLogging();
 

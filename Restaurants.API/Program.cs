@@ -11,13 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
 builder.Host.UseSerilog(
-    (context, configuration) =>
-        configuration
-            .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
-            .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Information)
-            .WriteTo.Console(
-                outputTemplate: "[{Timestamp:dd-MM HH:mm:ss} {Level:u3}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}"
-            )
+    (context, configuration) => configuration.ReadFrom.Configuration(context.Configuration)
 );
 
 var app = builder.Build();

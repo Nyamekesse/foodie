@@ -13,7 +13,9 @@ public static class ServiceCollectionExtension
     )
     {
         var connectionString = configuration.GetConnectionString("DatabaseConnection");
-        services.AddDbContext<RestaurantDbContext>(options => options.UseNpgsql(connectionString));
+        services.AddDbContext<RestaurantDbContext>(options =>
+            options.UseNpgsql(connectionString).EnableSensitiveDataLogging()
+        );
         services.AddScoped<IRestaurantSeeder, RestaurantSeeder>();
         services.AddScoped<IRestaurantRepository, RestaurantRepository>();
     }

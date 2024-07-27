@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Restaurants.Domain;
+using Restaurants.Domain.Repositories;
+using Restaurants.Infrastructure.Repositories;
 
 namespace Restaurants.Infrastructure;
 
@@ -18,5 +20,6 @@ public static class ServiceCollectionExtension
         );
         services.AddScoped<IRestaurantSeeder, RestaurantSeeder>();
         services.AddScoped<IRestaurantRepository, RestaurantRepository>();
+        services.AddScoped<IDishesRepository, DishesRepository>();
     }
 }

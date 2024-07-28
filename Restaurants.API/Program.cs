@@ -1,5 +1,6 @@
 using Restaurants.API.Middlewares;
 using Restaurants.Application;
+using Restaurants.Domain.Entities;
 using Restaurants.Infrastructure;
 using Serilog;
 using Serilog.Events;
@@ -37,6 +38,8 @@ if (app.Environment.IsDevelopment())
 // Configure the HTTP request pipeline.
 
 app.UseHttpsRedirection();
+
+app.MapIdentityApi<User>();
 
 app.UseAuthorization();
 

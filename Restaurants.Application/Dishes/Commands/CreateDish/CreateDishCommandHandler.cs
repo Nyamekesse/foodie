@@ -12,9 +12,12 @@ namespace Restaurants.Application.Dishes.Commands.CreateDish
         IRestaurantRepository _restaurantRepository,
         IDishesRepository _dishesRepository,
         IMapper _mapper
-    ) : IRequestHandler<CreateDishCommand>
+    ) : IRequestHandler<CreateDishCommand, int>
     {
-        public async Task Handle(CreateDishCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(
+            CreateDishCommand request,
+            CancellationToken cancellationToken
+        )
         {
             _logger.LogInformation("Creating a new dish {@Dish}", request);
             var restaurant = await _restaurantRepository.GetByIdAsync(request.RestaurantId);
@@ -22,7 +25,7 @@ namespace Restaurants.Application.Dishes.Commands.CreateDish
                 throw new NotFoundException(nameof(Restaurant), request.RestaurantId.ToString());
 
             var dish = _mapper.Map<Dish>(request);
-            await _dishesRepository.Create(dish);
+            return await _dishesRepository.Create(dish);
         }
     }
 }

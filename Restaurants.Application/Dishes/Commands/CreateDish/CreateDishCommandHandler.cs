@@ -8,7 +8,7 @@ using Restaurants.Domain.Repositories;
 namespace Restaurants.Application.Dishes.Commands.CreateDish
 {
     public class CreateDishCommandHandler(
-        ILogger _logger,
+        ILogger<CreateDishCommandHandler> _logger,
         IRestaurantRepository _restaurantRepository,
         IDishesRepository _dishesRepository,
         IMapper _mapper

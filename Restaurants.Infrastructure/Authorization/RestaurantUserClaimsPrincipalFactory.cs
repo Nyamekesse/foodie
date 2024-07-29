@@ -20,12 +20,15 @@ namespace Restaurants.Infrastructure.Authorization
             var id = await GenerateClaimsAsync(user);
             if (user.Nationality is not null)
             {
-                id.AddClaim(new Claim("Nationality", user.Nationality));
+                id.AddClaim(new Claim(AppClaimTypes.Nationality, user.Nationality));
             }
             if (user.DateOfBirth is not null)
             {
                 id.AddClaim(
-                    new Claim("DateOfBirth", user.DateOfBirth.Value.ToString("yyyy-MM-dd"))
+                    new Claim(
+                        AppClaimTypes.DateOfBirth,
+                        user.DateOfBirth.Value.ToString("yyyy-MM-dd")
+                    )
                 );
             }
 

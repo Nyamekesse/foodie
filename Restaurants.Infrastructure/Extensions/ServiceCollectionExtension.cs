@@ -5,9 +5,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Restaurants.Domain;
 using Restaurants.Domain.Entities;
+using Restaurants.Domain.Interfaces;
 using Restaurants.Domain.Repositories;
 using Restaurants.Infrastructure.Authorization;
 using Restaurants.Infrastructure.Authorization.Requirements;
+using Restaurants.Infrastructure.Authorization.Services;
 using Restaurants.Infrastructure.Repositories;
 
 namespace Restaurants.Infrastructure;
@@ -32,6 +34,7 @@ public static class ServiceCollectionExtension
         services.AddScoped<IRestaurantRepository, RestaurantRepository>();
         services.AddScoped<IDishesRepository, DishesRepository>();
         services.AddScoped<IAuthorizationHandler, MinimumAgeRequirementHandler>();
+        services.AddScoped<IRestaurantAuthorizationService, RestaurantAuthorizationService>();
         services
             .AddAuthorizationBuilder()
             .AddPolicy(

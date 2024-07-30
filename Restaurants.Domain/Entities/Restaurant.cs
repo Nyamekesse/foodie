@@ -1,4 +1,5 @@
 ﻿using System.Net.Sockets;
+using Restaurants.Domain.Entities;
 
 namespace Restaurants.Domain;
 
@@ -13,4 +14,6 @@ public class Restaurant
     public string? ContactNumber { get; set; }
     public Address? Address { get; set; }
     public List<Dish> Dishes { get; set; } = [];
+    public User Owner { get; set; } = default!;
+    public string OwnerId { get; set; } = default!;
 }

@@ -34,6 +34,7 @@ public static class ServiceCollectionExtension
         services.AddScoped<IRestaurantRepository, RestaurantRepository>();
         services.AddScoped<IDishesRepository, DishesRepository>();
         services.AddScoped<IAuthorizationHandler, MinimumAgeRequirementHandler>();
+        services.AddScoped<IAuthorizationHandler, CreatedMultipleRestaurantsRequirementHandler>();
         services.AddScoped<IRestaurantAuthorizationService, RestaurantAuthorizationService>();
         services
             .AddAuthorizationBuilder()
@@ -44,6 +45,10 @@ public static class ServiceCollectionExtension
             .AddPolicy(
                 PolicyNames.AtLeast20YearsOld,
                 builder => builder.AddRequirements(new MinimumAgeRequirement(20))
+            )
+            .AddPolicy(
+                PolicyNames.CreatedAtLeast2Restaurants,
+                builder => builder.AddRequirements(new CreatedMultipleRestaurantsRequirement(2))
             );
     }
 }

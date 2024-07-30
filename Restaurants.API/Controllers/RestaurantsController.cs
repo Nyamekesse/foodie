@@ -68,7 +68,7 @@ namespace Restaurants.API.Controllers
         {
             command.Id = id;
             await mediator.Send(command);
-            return NotFound();
+            return NoContent();
         }
     }
 }

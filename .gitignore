@@ -544,7 +544,8 @@ obj/
 # Ignore all local history of files
 .history
 .ionide
-
+.azure
+.vscode
 ## Azure
 restaurant-api-dev.PublishSettings
 

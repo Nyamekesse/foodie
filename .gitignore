@@ -545,6 +545,9 @@ obj/
 .history
 .ionide
 
+## Azure
+restaurant-api-dev.PublishSettings
+
 ### VisualStudio ###
 
 # User-specific files
